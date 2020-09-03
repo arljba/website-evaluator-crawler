@@ -10,3 +10,10 @@ class CrawlerItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
     pass
+
+
+class WebCheckScraperItem(scrapy.Item):
+    # The source URL
+    url_from = scrapy.Field()
+    # The destination URL
+    url_to = scrapy.Field()
