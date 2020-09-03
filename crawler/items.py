@@ -13,7 +13,5 @@ class CrawlerItem(scrapy.Item):
 
 
 class WebCheckScraperItem(scrapy.Item):
-    # The source URL
-    url_from = scrapy.Field()
-    # The destination URL
-    url_to = scrapy.Field()
+    url_src = scrapy.Field()
+    url_dest = scrapy.Field()

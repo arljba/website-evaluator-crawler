@@ -13,6 +13,11 @@ class LinkSpider(CrawlSpider):
     # entry point
     start_urls = ["http://www.hs-flensburg.de/"]
 
+    COUNT_MAX = 5
+    custom_settings = {
+        'CLOSESPIDER_PAGECOUNT': COUNT_MAX
+    }
+
     rules = [
         Rule(
             LinkExtractor(
@@ -20,16 +25,17 @@ class LinkSpider(CrawlSpider):
                 unique=True
             ),
             follow=True,  # recursive call
-            callback="parse"
+            callback="parse_items"
         )
     ]
 
-    def start_requests(self):
+    def parse(self):
         for url in self.start_urls:
             yield scrapy.Request(url, callback=self.parse, dont_filter=True)
 
     # Method for parsing items
-    def parse(self, response):
+
+    def parse_items(self, response):
         # liste of founf links
         items = []
         # only canonical and unique links
@@ -42,7 +48,7 @@ class LinkSpider(CrawlSpider):
                     is_allowed = True
             if is_allowed:
                 item = WebCheckScraperItem()
-                item['url_from'] = response.url
-                item['url_to'] = link.url
+                item['url_src'] = response.url
+                item['url_dest'] = link.url
                 items.append(item)
         return items
