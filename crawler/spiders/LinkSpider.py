@@ -9,9 +9,9 @@ class LinkSpider(CrawlSpider):
     name = "linkspider"
 
     # only check internal domain links
-    allowed_domains = ["hs-flensburg.de"]
+    allowed_domains = ["books.toscrape.com"]
     # entry point
-    start_urls = ["http://www.hs-flensburg.de/"]
+    start_urls = ["http://books.toscrape.com/"]
 
     COUNT_MAX = 5
     custom_settings = {
@@ -29,9 +29,11 @@ class LinkSpider(CrawlSpider):
         )
     ]
 
-    def parse(self):
+    def parse(self, response):
         for url in self.start_urls:
             yield scrapy.Request(url, callback=self.parse, dont_filter=True)
+        for item in self.parse_items(response):
+            yield item
 
     # Method for parsing items
 
