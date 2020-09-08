@@ -15,3 +15,4 @@ class CrawlerItem(scrapy.Item):
 class WebCheckScraperItem(scrapy.Item):
     url_src = scrapy.Field()
     url_dest = scrapy.Field()
+    status = scrapy.Field()

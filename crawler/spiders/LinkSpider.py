@@ -8,6 +8,9 @@ class LinkSpider(CrawlSpider):
     # The name of the spider
     name = "linkspider"
 
+    # responses that should be handeld
+    handle_httpstatus_list = [404, 410, 500]
+
     # amount of pages that are being crawled. Keep it low to be considerate its just as a proof of concept.
     COUNT_MAX = 5
     custom_settings = {
@@ -49,4 +52,5 @@ class LinkSpider(CrawlSpider):
         item = WebCheckScraperItem()
         item['url_src'] = response.request.headers.get('Referer').decode()
         item['url_dest'] = response.url
+        item['status'] = response.status
         yield item
