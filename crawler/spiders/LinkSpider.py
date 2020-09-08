@@ -2,8 +2,6 @@ import scrapy
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import Rule, CrawlSpider
 from ..items import WebCheckScraperItem
-from urllib.parse import urlparse
-from scrapy.selector import Selector
 
 
 class LinkSpider(CrawlSpider):
