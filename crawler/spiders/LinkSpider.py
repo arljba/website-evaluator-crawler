@@ -12,7 +12,7 @@ class LinkSpider(CrawlSpider):
     handle_httpstatus_list = [404, 410, 500]
 
     # amount of pages that are being crawled. Keep it low to be considerate its just as a proof of concept.
-    COUNT_MAX = 5
+    COUNT_MAX = 50
     custom_settings = {
         'CLOSESPIDER_PAGECOUNT': COUNT_MAX
     }
