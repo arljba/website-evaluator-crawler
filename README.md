@@ -2,10 +2,6 @@
 
 A crawler which provides information about the structure of a website. How pages on the website are connected and the status code of their connection.
 The result is send back in JSON format.
-The endpoint which starts the crawler is already hosted and accesible with 
-```
-GET http://arne-baumann.de:9080/crawl.json?spider_name=linkspider&start_requests=true&domain=_domain_&starturl=_url_
-```
 
 ## Installation
 
